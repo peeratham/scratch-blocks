@@ -543,8 +543,17 @@ Blockly.Constants.Data.CUSTOM_CONTEXT_MENU_GET_VARIABLE_MIXIN = {
         callback: Blockly.Constants.Data.DELETE_OPTION_CALLBACK_FACTORY(this,
             fieldName)
       };
+      var makeVarLocalOption = {
+        text: "Make Variable Local to this sprite",
+        enabled: true,
+        callback: Blockly.Constants.Data.MAKE_LOCAL_OPTION_CALLBACK_FACTORY(this, fieldName),
+        highlightCallback: Blockly.Constants.Data.SHOW_SCOPE_CHANGE_CALLBACK_FACTORY(this, fieldName)
+      }
+
+
       options.push(renameOption);
       options.push(deleteOption);
+      options.push(makeVarLocalOption);
     }
   }
 };
@@ -656,3 +665,37 @@ Blockly.Constants.Data.DELETE_OPTION_CALLBACK_FACTORY = function(block,
     workspace.deleteVariableById(variable.getId());
   };
 };
+
+
+/**
+ * Enhancement for Reduce Variable Scope Refactoring
+ * 
+ */
+Blockly.Constants.Data.MAKE_LOCAL_OPTION_CALLBACK_FACTORY = function(block, fieldName){
+  return function() {
+    var workspace = block.workspace;
+    var variable = block.getField(fieldName).getVariable();
+    console.log("todo: call refactorer to reduce var scope");
+    // console.log("todo: send event to vm ? to gui to highlight new scope");
+    // create a new var with temp name
+    // workspace.transformer.localizeVariableById(variable.getId());
+    // 
+  };
+}
+
+/**
+ * Enhancement to show Semantic Changes for 
+ * Reduce Variable Scope Refactoring
+ * 
+ */
+Blockly.Constants.Data.SHOW_SCOPE_CHANGE_CALLBACK_FACTORY = function(block, fieldName){
+  return function(event) {
+    var workspace = block.workspace;
+    var variable = block.getField(fieldName).getVariable();
+    // console.log("todo: call refactorer to reduce var scope");
+    console.log(`todo: send ${event.type} event to vm ? to gui to highlight new scope`);
+    // create a new var with temp name
+    // workspace.transformer.localizeVariableById(variable.getId());
+    // 
+  };
+}

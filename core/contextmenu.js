@@ -107,6 +107,13 @@ Blockly.ContextMenu.populate_ = function(options, rtl) {
         // Right-clicking on menu option should count as a click.
         goog.events.dispatchEvent(this, goog.ui.Component.EventType.ACTION);
       };
+      //enhance support to show see semantic changes if the item is acted upon
+      if(option.highlightCallback){
+        goog.events.listen(
+          menuItem, goog.ui.Component.EventType.HIGHLIGHT, option.highlightCallback);
+        goog.events.listen(
+          menuItem, goog.ui.Component.EventType.LEAVE, option.highlightCallback);
+      }
     }
   }
   return menu;
