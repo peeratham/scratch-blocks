@@ -995,6 +995,17 @@ Blockly.WorkspaceSvg.prototype.reportValue = function(id, value) {
   Blockly.DropDownDiv.showPositionedByBlock(this, block);
 };
 
+// enhance show tooltip next to a specified block
+Blockly.WorkspaceSvg.prototype.showHintIcon = function(id) {
+  var block = this.getBlockById(id);
+  if (!block) {
+    throw 'Tried to show hint value on block that does not exist.';
+  }
+  
+  block.setHint();
+  console.log('todo: show light bulb icon');
+}
+
 /**
  * Paste the provided block onto the workspace.
  * @param {!Element} xmlBlock XML block element.

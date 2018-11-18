@@ -276,6 +276,13 @@ Blockly.BlockSvg.prototype.getIcons = function() {
   if (this.warning) {
     icons.push(this.warning);
   }
+  // enhance
+  if(this.hint) {
+    console.log('todo: may need to push hint icon');
+    //but will need to figure out how to computeIconLocation works with hint icon 
+    //specifically the translate attr.; possibly need to override (redefine in hint class itself)
+    // icons.push(this.hint);
+  }
   return icons;
 };
 
@@ -919,6 +926,10 @@ Blockly.BlockSvg.prototype.setCommentText = function(text, commentId,
     this.bumpNeighbours_();
   }
 };
+
+Blockly.BlockSvg.prototype.setHint = function(){
+  this.hint = new Blockly.Hint(this);
+}
 
 /**
  * Set this block's warning text.
