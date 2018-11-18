@@ -299,9 +299,9 @@ Blockly.Variables.createVariable = function(workspace, opt_callback, opt_type) {
   // Prompt the user to enter a name for the variable
   Blockly.prompt(newMsg, '',
       function(text, additionalVars, variableOptions) {
-        var scope = variableOptions.scope;
+        var scope = variableOptions ? variableOptions.scope:'global';
         var isLocal = (scope === 'local') || false;
-        var isCloud = variableOptions.isCloud || false;
+        var isCloud = variableOptions ? variableOptions.isCloud : false;
         // Default to [] if additionalVars is not provided
         additionalVars = additionalVars || [];
         // Only use additionalVars for global variable creation.
