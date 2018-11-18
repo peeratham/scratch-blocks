@@ -676,10 +676,6 @@ Blockly.Constants.Data.MAKE_LOCAL_OPTION_CALLBACK_FACTORY = function(block, fiel
     var workspace = block.workspace;
     var variable = block.getField(fieldName).getVariable();
     console.log("todo: call refactorer to reduce var scope");
-    // console.log("todo: send event to vm ? to gui to highlight new scope");
-    // create a new var with temp name
-    // workspace.transformer.localizeVariableById(variable.getId());
-    // 
   };
 }
 
@@ -692,10 +688,8 @@ Blockly.Constants.Data.SHOW_SCOPE_CHANGE_CALLBACK_FACTORY = function(block, fiel
   return function(event) {
     var workspace = block.workspace;
     var variable = block.getField(fieldName).getVariable();
-    // console.log("todo: call refactorer to reduce var scope");
-    console.log(`todo: send ${event.type} event to vm ? to gui to highlight new scope`);
-    // create a new var with temp name
-    // workspace.transformer.localizeVariableById(variable.getId());
-    // 
+    var event = new Blockly.Events.Ui(block, 'var_scope_option', null, event.type);
+    event.workspaceId = workspace.id;
+    Blockly.Events.fire(event);
   };
 }
