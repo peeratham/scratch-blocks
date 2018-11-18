@@ -18,7 +18,7 @@ Blockly.Hint = function(block) {
   let iconGroup_ = this.iconGroup_ = Blockly.utils.createSvgElement('g', {'class': 'blocklyIconGroup'}, null);
   let WIDTH_ = 8*Blockly.BlockSvg.GRID_UNIT;
   let HEIGHT_ = 8*Blockly.BlockSvg.GRID_UNIT;
-  let lightbulbSvgPath = 'zoom-out.svg';
+  let lightbulbSvgPath = '/icons/set-led_yellow.svg';
   var lightbulbSvg = Blockly.utils.createSvgElement(
       'image',
       {
@@ -34,7 +34,7 @@ Blockly.Hint = function(block) {
   let bBox = {width: block.width, height: block.height};
   bBox.width *= scale;
   bBox.height *= scale;
-  let offset = 11 * Blockly.BlockSvg.GRID_UNIT;
+  let offset = 9 * Blockly.BlockSvg.GRID_UNIT;
   let left = bBox.width+offset;
   let top = bBox.height/2-HEIGHT_/2;
 
