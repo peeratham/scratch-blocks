@@ -674,6 +674,11 @@ Blockly.BlockSvg.prototype.render = function(opt_bubble) {
     scratchCommentIcon.renderIcon(iconX, inputMarginY);
   }
 
+  // Enhance: recompute hint location
+  if(this.hint){
+    this.hint.recomputeIconLocation();
+  }
+
   if (opt_bubble !== false) {
     // Render all blocks above this one (propagate a reflow).
     var parentBlock = this.getParent();
