@@ -113,6 +113,8 @@
           state = sessionStorage.getItem('logFlyoutEvents');
           logFlyoutEvents(Boolean(state));
         }
+
+        showHintSetup();
       }
 
       function getToolboxElement() {
@@ -134,6 +136,15 @@
         var xml = Blockly.Xml.textToDom(input.value);
         Blockly.Xml.domToWorkspace(xml, workspace);
         taChange();
+      }
+
+      function showHintSetup(){
+        var input = document.getElementById('importExport');
+        input.value = "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables><block type='motion_movesteps' id='*`#p/~R4kNb@uT|}iU@u' x='304' y='153'><value name='STEPS'><shadow type='math_number' id='{H`(3cDLOp*BR%OM3t1j'><field name='NUM'>10</field></shadow></value></block></xml>";
+        fromXml();
+        
+        Blockly.selected = workspace.getBlockById('*`#p/~R4kNb@uT|}iU@u');
+        showHint();
       }
 
       function toCode(lang) {
@@ -303,6 +314,14 @@
           workspace.reportValue(
             Blockly.selected.id,
             document.getElementById('reportValue').value
+          );
+        }
+      }
+
+      function showHint() {
+        if (Blockly.selected) {
+          workspace.showHintIcon(
+            Blockly.selected.id
           );
         }
       }
@@ -585,6 +604,7 @@
       Report:
       <input id="reportValue" type="text" value="123" />
       <input type="button" value="Report last clicked block" onclick="reportDemo()" />
+      <input type="button" value="Show hint on last clicked block" onclick="showHint()" />
     </p>
   </body>
 </html>
