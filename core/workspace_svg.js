@@ -1002,7 +1002,7 @@ Blockly.WorkspaceSvg.prototype.drawHighlightBox = function (id, id2 = null, opti
   if (id) {
     block1 = this.getBlockById(id);
     block2 = this.getBlockById(id2);
-    if (block1.getFirstStatementConnection()&&!block2) {
+    if (block1&&block1.getFirstStatementConnection()&&!block2) {
       svg = Blockly.utils.createSvgElement('path',
         {
           'd': Blockly.utils.getBoundingPathForControlBlock(block1),
