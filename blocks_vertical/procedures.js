@@ -23,7 +23,7 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.procedures');
+goog.provide('Blockly.ScratchBlocks.ProcedureUtils');
 
 goog.require('Blockly.Blocks');
 goog.require('Blockly.constants');
